@@ -1,6 +1,7 @@
 #!/bin/sh
 
-IMAGE=${1:-cskiraly/agile-arm}
+ARCH=$(uname -m)
+IMAGE=${1:-cskiraly/agile-$ARCH}
 
 dbus-daemon \
   --fork \
