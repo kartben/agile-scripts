@@ -1,5 +1,7 @@
 #!/bin/sh
 
+IMAGE=${1:-cskiraly/agile-arm}
+
 DOCKER_COMMON="\
   -d \
   --security-opt apparmor:unconfined \
@@ -16,18 +18,18 @@ dbus-daemon \
 docker run \
   $DOCKER_COMMON \
   -v /var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket \
-  $1 scripts/start.sh BLE
+  $IMAGE scripts/start.sh BLE
 
 docker run \
   $DOCKER_COMMON \
-  $1 scripts/start.sh ProtocolManager
+  $IMAGE scripts/start.sh ProtocolManager
 
 docker run \
   $DOCKER_COMMON \
-  $1 scripts/start.sh DeviceManager
+  $IMAGE scripts/start.sh DeviceManager
 
 docker run \
   $DOCKER_COMMON \
   -v /var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket \
   -p 8080:8080/tcp \
-  $1 scripts/start.sh http
+  $IMAGE scripts/start.sh http
