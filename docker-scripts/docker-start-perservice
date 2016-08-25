@@ -2,6 +2,7 @@
 
 ARCH=$(uname -m)
 IMAGE=${1:-cskiraly/agile-$ARCH}
+BINDIR=$(dirname $0)
 
 DOCKER_COMMON="\
   -d \
@@ -14,7 +15,7 @@ dbus-daemon \
   --fork \
   --print-pid --print-address \
   --address=unix:path=$HOME/agile_bus_socket \
-  --config-file=dbus/agile.conf
+  --config-file=$BINDIR/../dbus/agile.conf
 
 docker run \
   $DOCKER_COMMON \
