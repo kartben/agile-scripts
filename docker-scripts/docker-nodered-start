@@ -3,4 +3,4 @@
 docker run \
   -d \
   -p 1880:1880 \
-  agile-nodered-arm
+  cskiraly/agile-nodered-arm
