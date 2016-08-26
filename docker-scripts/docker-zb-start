@@ -1,0 +1,26 @@
+#!/bin/sh
+
+ARCH=$(uname -m)
+IMAGE=${1:-cskiraly/agile-zb-$ARCH}
+BINDIR=$(dirname $0)
+DBUS_AGILE_BUS_ADDRESS="$HOME/agile_bus_socket2"
+
+DOCKER_COMMON="\
+  -d \
+  --security-opt apparmor:unconfined \
+  -v $DBUS_AGILE_BUS_ADDRESS:/usr/src/app/agile_bus_socket \
+  -e DBUS_SESSION_BUS_ADDRESS=unix:path=/usr/src/app/agile_bus_socket
+"
+
+#TODO: confine priviledged to the serial
+docker run \
+  $DOCKER_COMMON \
+  -v /dev/ttyUSB0:/dev/ttyUSB0 \
+  --privileged \
+  $IMAGE python3 dbus_server/dbus_server.py
+
+#TODO: the device needs the ZB driver at startup. Find a way to make sure ZB has already started.
+sleep 10
+docker run \
+  $DOCKER_COMMON \
+  $IMAGE python3 ge_link_bulb/ge_link_bulb_device.py
