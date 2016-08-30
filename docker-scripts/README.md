@@ -21,7 +21,7 @@ sudo usermod -a -G docker pi
 - pull our library to have docker-scripts
 ```
 mkdir -p AGILE && cd AGILE
-git clone https://github.com/Agile-IoT/Agile-BLE.git
+git clone https://github.com/Agile-IoT/agile-scripts.git
 cd Agile-BLE
 ```
 
