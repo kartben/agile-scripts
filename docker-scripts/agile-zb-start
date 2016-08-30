@@ -15,7 +15,7 @@ DOCKER_COMMON="\
 #TODO: confine priviledged to the serial
 docker run \
   $DOCKER_COMMON \
-  -v /dev/ttyUSB0:/dev/ttyUSB0 \
+  -v /dev/ttyUSB1:/dev/ttyUSB0 \
   --privileged \
   $IMAGE python3 dbus_server/dbus_server.py
 

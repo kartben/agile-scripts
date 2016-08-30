@@ -27,7 +27,7 @@ cd Agile-BLE
 
 - pull ARM image file and start AGILE
 ```
-docker pull cskiraly/agile-arm:latest # Not strictly needed, as the container is also pulled by docker-start, if not done before.
+docker pull cskiraly/agile-arm:latest # Not strictly needed, as the container is also pulled by agile-core-start, if not done before.
 ```
 
 Starting/Stopping AGILE
@@ -36,18 +36,18 @@ Starting/Stopping AGILE
 - starting AGILE
 
 ```
-docker-scripts/docker-start cskiraly/agile-arm:latest
-. docker-scripts/docker-env # Expose AGILE D-Bus in shell. 
+docker-scripts/agile-core-start
+. docker-scripts/agile-env # Expose AGILE D-Bus in shell. 
 ```
 
 - stopping AGILE
 ```
-sudo docker-scripts/docker-stop
+sudo docker-scripts/agile-stop
 ```
 
 - alternative start AGILE with per-service containers
 ```
-docker-scripts/docker-start-perservice cskiraly/agile-arm:latest
+docker-scripts/agile-core-perservice-start
 ```
 
 Testing the installation
@@ -55,6 +55,6 @@ Testing the installation
 
 ```
 sudo apt-get install python3-dbus -y # Make sure D-Bus python support is available.
-. docker-scripts/docker-env # Set up environment to connect to AGILE D-Bus.                                                      
+. docker-scripts/agile-env # Set up environment to connect to AGILE D-Bus.                                                      
 test/discover.py
 ```
