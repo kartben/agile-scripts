@@ -1,6 +1,9 @@
 #!/bin/sh
 
+NAME=agile-nodered
+docker rm $NAME
 docker run \
   -d \
   -p 1880:1880 \
+  --name $NAME \
   cskiraly/agile-nodered-armv7l

@@ -13,14 +13,20 @@ DOCKER_COMMON="\
 "
 
 #TODO: confine priviledged to the serial
+NAME=agile-zb
+docker rm $NAME
 docker run \
   $DOCKER_COMMON \
   -v /dev/ttyUSB1:/dev/ttyUSB0 \
   --privileged \
+  --name $NAME \
   $IMAGE python3 dbus_server/dbus_server.py
 
 #TODO: the device needs the ZB driver at startup. Find a way to make sure ZB has already started.
 sleep 10
+NAME=agile-zb-lamp
+docker rm $NAME
 docker run \
   $DOCKER_COMMON \
+  --name $NAME \
   $IMAGE python3 ge_link_bulb/ge_link_bulb_device.py

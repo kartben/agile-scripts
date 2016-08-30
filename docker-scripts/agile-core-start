@@ -11,6 +11,8 @@ dbus-daemon \
   --address=unix:path=$DBUS_AGILE_BUS_ADDRESS \
   --config-file=$BINDIR/../dbus/agile.conf
 
+NAME=agile-core
+docker rm $NAME
 docker run \
   -d \
   -v /var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket \
@@ -18,4 +20,5 @@ docker run \
   -p 8080:8080/tcp \
   -v $DBUS_AGILE_BUS_ADDRESS:/usr/src/app/agile_bus_socket \
   -e DBUS_SESSION_BUS_ADDRESS=unix:path=/usr/src/app/agile_bus_socket \
+  --name $NAME \
   $IMAGE

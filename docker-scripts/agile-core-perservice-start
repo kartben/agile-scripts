@@ -18,21 +18,33 @@ dbus-daemon \
   --address=unix:path=$DBUS_AGILE_BUS_ADDRESS \
   --config-file=$BINDIR/../dbus/agile.conf
 
+NAME=agile-core-BLE
+docker rm $NAME
 docker run \
   $DOCKER_COMMON \
   -v /var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket \
+  --name $NAME \
   $IMAGE scripts/start.sh BLE
 
+NAME=agile-core-ProtocolManager
+docker rm $NAME
 docker run \
   $DOCKER_COMMON \
+  --name $NAME \
   $IMAGE scripts/start.sh ProtocolManager
 
+NAME=agile-core-DeviceManager
+docker rm $NAME
 docker run \
   $DOCKER_COMMON \
+  --name $NAME \
   $IMAGE scripts/start.sh DeviceManager
 
+NAME=agile-core-http
+docker rm $NAME
 docker run \
   $DOCKER_COMMON \
   -v /var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket \
   -p 8080:8080/tcp \
+  --name $NAME \
   $IMAGE scripts/start.sh http
