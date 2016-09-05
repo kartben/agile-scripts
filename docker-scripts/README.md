@@ -12,11 +12,56 @@ curl -s https://packagecloud.io/install/repositories/Hypriot/Schatzkiste/script.
 sudo apt-get install docker-hypriot
 sudo usermod -a -G docker pi
 ```
-
 - you can make the [group change effective without logout/login](http://superuser.com/questions/272061/reload-a-linux-users-group-assignments-without-logging-out)
 ```
 `su - $USER`
 ```
+
+- update Bluez for up-to-date BLE support
+
+Unfortunately the Raspbian Bluez is too old. You should update to version 5.39. Draft instructions follow. Note that this will be simplified in the near future:
+
+```
+sudo apt-get install libglib2.0-dev libdbus-1-dev libudev-dev libical-dev libreadline-dev
+wget http://www.kernel.org/pub/linux/bluetooth/bluez-5.39.tar.xz
+tar xf bluez-5.39.tar.xz
+cd bluez-5.39
+./configure
+make -j 4
+sudo make install
+```
+
+Enable experimental mode by changing the following line in /lib/systemd/system/bluetooth.service
+```
+ExecStart=/usr/local/libexec/bluetooth/bluetoothd --experimental
+```
+
+Update /etc/init.d/bluetooth to point to the just installed version in /usr/local
+```
+24c24,25
+< PATH=/sbin:/bin:/usr/sbin:/usr/bin
+---
+> PATH=/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+27,28c28,31
+< DAEMON=/usr/sbin/bluetoothd
+< HCIATTACH=/usr/bin/hciattach
+---
+> DAEMON=/usr/local/libexec/bluetooth/bluetoothd
+> HCIATTACH=/usr/local/bin/hciattach
+33c36,37
+< SDPTOOL=/usr/bin/sdptool
+---
+> SDPTOOL=/usr/local/bin/sdptool
+```
+
+Then, restart bluez:
+```
+sudo systemctl daemon-reload
+sudo service bluetooth restart
+```
+
+Getting AGILE
+---
 
 - pull our library to have docker-scripts
 ```
