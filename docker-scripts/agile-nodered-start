@@ -6,4 +6,4 @@ docker run \
   -d \
   -p 1880:1880 \
   --name $NAME \
-  cskiraly/agile-nodered-armv7l
+  agileiot/agile-nodered-armv7l

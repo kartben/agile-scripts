@@ -72,7 +72,7 @@ cd Agile-BLE
 
 - pull ARM image file and start AGILE
 ```
-docker pull cskiraly/agile-core-armv7l:latest # Not strictly needed, as the container is also pulled by agile-core-start, if not done before.
+docker pull agileiot/agile-core-armv7l:latest # Not strictly needed, as the container is also pulled by agile-core-start, if not done before.
 ```
 
 Starting/Stopping AGILE
