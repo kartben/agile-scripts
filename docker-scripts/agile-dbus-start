@@ -1,0 +1,12 @@
+#!/bin/sh
+
+ARCH=$(uname -m)
+BINDIR=$(dirname $0)
+DBUS_AGILE_BUS_ADDRESS="$HOME/agile_bus_socket2"
+
+dbus-daemon \
+  --fork \
+  --print-pid --print-address \
+  --address=unix:path=$DBUS_AGILE_BUS_ADDRESS \
+  --config-file=$BINDIR/../dbus/agile.conf
+
