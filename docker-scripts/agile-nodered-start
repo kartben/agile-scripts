@@ -6,4 +6,5 @@ docker run \
   -d \
   -p 1880:1880 \
   --name $NAME \
+  -v $HOME/.agile/nodered:/root/.node-red \
   agileiot/agile-nodered-armv7l
