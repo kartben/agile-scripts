@@ -1,0 +1,28 @@
+#!/bin/sh
+
+BINDIR=$(dirname $0)
+
+case "$1" in
+  start)
+    $BINDIR/agile-core-perservice-start
+    $BINDIR/agile-influxdb-start
+    $BINDIR/agile-grafana-start
+    $BINDIR/agile-nodered-start
+    $BINDIR/agile-osjs-start
+    ;;
+  stop)
+    $BINDIR/agile-stop
+    docker stop agile-osjs
+    docker stop agile-nodered
+    docker stop agile-grafana
+    docker stop agile-influxdb
+    ;;
+  restart)
+    $0 stop
+    sleep 1
+    $0 start
+    ;;
+  *)
+    echo "Usage: $0 {start|stop|restart}"
+    exit 1
+esac
