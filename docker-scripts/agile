@@ -11,7 +11,11 @@ case "$1" in
     $BINDIR/agile-osjs-start
     ;;
   stop)
-    $BINDIR/agile-stop
+    #$BINDIR/agile-stop
+    docker stop agile-core-http
+    docker stop agile-core-ProtocolManager
+    docker stop agile-core-DeviceManager
+    docker stop agile-core-BLE
     docker stop agile-osjs
     docker stop agile-nodered
     docker stop agile-grafana
