@@ -5,7 +5,13 @@ BINDIR=$(dirname $0)
 case "$1" in
   start)
     $BINDIR/dbus/agile-dbus-start
-    $BINDIR/compose/agile-compose up
+    $BINDIR/compose/agile-compose up -d agile-core
+    sleep 10
+    $BINDIR/compose/agile-compose up -d agile-ui
+    sleep 10
+    $BINDIR/compose/agile-compose up -d agile-osjs
+    sleep 10
+    $BINDIR/compose/agile-compose up -d
     ;;
   stop)
     $BINDIR/dbus/agile-dbus-stop
