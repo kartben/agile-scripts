@@ -54,6 +54,8 @@ services:
 
     #agile-grafana:
     #  image: $IMAGE_GRAFANA
+    #  volumes:
+    #   - $HOME/.agile/grafana:/var/lib/grafana
     #  ports:
     #    - 3000:3000/tcp
     #  restart: always
