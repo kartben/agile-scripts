@@ -46,7 +46,7 @@ services:
     #agile-influxdb:
     #  image: $IMAGE_INFLUXDB
     #  volumes:
-    #   - $HOME/.agile/influxdb:/var/lib/influxdb \
+    #   - $HOME/.agile/influxdb:/var/lib/influxdb
     #  ports:
     #    - 8083:8083/tcp
     #    - 8086:8086/tcp
