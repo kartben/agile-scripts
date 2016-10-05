@@ -1,0 +1,26 @@
+#!/bin/sh
+
+BINDIR=$(dirname $0)
+
+MODULES="core-perservice influxdb grafana nodered osjs"
+
+case "$1" in
+  start)
+    $BINDIR/agile-compose up
+    ;;
+  stop)
+    $BINDIR/agile-compose down
+    ;;
+  restart)
+    $0 stop
+    sleep 1
+    $0 start
+    ;;
+  update)
+    $BINDIR/agile-compose pull
+    ;;
+  *)
+    echo "Usage: $0 {start|stop|restart|update}"
+    exit 1
+    ;;
+esac

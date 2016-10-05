@@ -1,0 +1,23 @@
+#!/bin/bash
+
+export AGILE_CLIENT_PORT=2000
+export DBUS_SYSTEM_SOCKET=/var/run/dbus/system_bus_socket
+export DBUS_SESSION_SOCKET=$HOME/agile_bus_socket2
+export ARCH=`arch`
+
+case $ARCH in
+  armv7l )
+    export IMAGE_INFLUXDB=sbiermann/rpi-influxdb
+    export IMAGE_GRAFANA=fg2it/grafana-armhf:v3.1.1
+    ;;
+  x86_64 )
+    export IMAGE_INFLUXDB=influxdb
+    export IMAGE_GRAFANA=grafana/grafana:3.1.1
+    ;;
+  * )
+    export IMAGE_INFLUXDB=influxdb
+    export IMAGE_GRAFANA=grafana/grafana:3.1.1
+    ;;
+esac
+
+docker-compose "$@"
