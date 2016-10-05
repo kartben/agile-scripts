@@ -2,14 +2,14 @@
 
 BINDIR=$(dirname $0)
 
-MODULES="core-perservice influxdb grafana nodered osjs"
-
 case "$1" in
   start)
-    $BINDIR/agile-compose up
+    $BINDIR/dbus/agile-dbus-start
+    $BINDIR/compose/agile-compose up
     ;;
   stop)
-    $BINDIR/agile-compose down
+    $BINDIR/dbus/agile-dbus-stop
+    $BINDIR/compose/agile-compose down
     ;;
   restart)
     $0 stop
@@ -17,7 +17,7 @@ case "$1" in
     $0 start
     ;;
   update)
-    $BINDIR/agile-compose pull
+    $BINDIR/compose/agile-compose pull
     ;;
   *)
     echo "Usage: $0 {start|stop|restart|update}"
