@@ -11,7 +11,7 @@ case "$1" in
     sleep 10
     $BINDIR/compose/agile-compose up -d agile-osjs
     sleep 10
-    $BINDIR/compose/agile-compose up -d
+    $BINDIR/compose/agile-compose up -d agile-nodered
     ;;
   stop)
     $BINDIR/dbus/agile-dbus-stop
