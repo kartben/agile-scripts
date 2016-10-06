@@ -14,7 +14,7 @@ services:
       privileged: true
 
     agile-ui:
-      image: craycraig/agile-ui-armv7l
+      image: agileiot/agile-ui-armv7l
       depends_on:
         - agile-core
       environment:
