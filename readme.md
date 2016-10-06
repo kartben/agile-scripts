@@ -17,6 +17,13 @@ Use `./agile start` to start the main components, and `./agile stop` to stop the
 
 Once component started you can visit http://127.0.0.1:8000 to access the AGILE user interface and start building your IoT solution
 
+Update
+---
+
+Use `./agile update` to download the newest version of AGILE component. Note that this is different from `git pull`, which updates the
+startup scripts only.
+
+
 Troubleshooting
 ---
 You can access the logs with `./compose/agile-compose logs` and view all logs.
