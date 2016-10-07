@@ -24,6 +24,17 @@ Use `./agile update` to download the newest version of AGILE component. Note tha
 startup scripts only.
 
 
+Updating single component
+---
+
+In most cases, you can update a single coponent while other components keep running.
+For example, to update agile-osjs without restarting the rest, use the following commands:
+```
+compose/agile-compose stop agile-osjs
+compose/agile-compose pull agile-osjs
+compose/agile-compose up agile-osjs
+```
+
 Troubleshooting
 ---
 You can access the logs with `./compose/agile-compose logs` and view all logs.
