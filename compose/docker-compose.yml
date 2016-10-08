@@ -22,7 +22,7 @@ services:
       restart: always
       privileged: true
       network_mode: "host"
-      command: bash -c "mkdir -p /var/run/dbus && dbus-daemon --system && /usr/local/libexec/bluetooth/bluetoothd -E & scripts/start.sh BLE"
+      command: bash -c "mkdir -p /var/run/dbus && dbus-daemon --system && /usr/local/libexec/bluetooth/bluetoothd -E & sleep 10 && scripts/start.sh BLE"
 
     agile-ui:
       image: agileiot/agile-ui-armv7l
