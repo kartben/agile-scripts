@@ -9,7 +9,7 @@ Prerequisites
 - install docker from [Hypriot](http://blog.hypriot.com/post/your-number-one-source-for-docker-on-arm/)
 ```
 curl -s https://packagecloud.io/install/repositories/Hypriot/Schatzkiste/script.deb.sh | sudo bash
-sudo apt-get install docker-hypriot
+sudo apt-get install -y docker-hypriot docker-compose
 sudo usermod -a -G docker pi
 ```
 - you can make the [group change effective without logout/login](http://superuser.com/questions/272061/reload-a-linux-users-group-assignments-without-logging-out)
@@ -67,7 +67,7 @@ Getting AGILE
 ```
 mkdir -p AGILE && cd AGILE
 git clone https://github.com/Agile-IoT/agile-scripts.git
-cd Agile-BLE
+cd agile-scripts
 ```
 
 - pull ARM image file and start AGILE
