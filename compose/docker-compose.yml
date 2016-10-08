@@ -72,8 +72,11 @@ services:
 
     agile-zb-lamp:
       image: agileiot/agile-zb-armv7l
+      depends_on:
+        - agile-zb
       volumes:
         - $DBUS_SESSION_SOCKET:/usr/src/app/agile_bus_socket
       environment:
         - DBUS_SESSION_BUS_ADDRESS=unix:path=/usr/src/app/agile_bus_socket
       command: python3 ge_link_bulb/ge_link_bulb_device.py
+      privileged: true
