@@ -7,6 +7,8 @@ case "$1" in
     $BINDIR/dbus/agile-dbus-start
     $BINDIR/compose/agile-compose up -d agile-core
     sleep 10
+    $BINDIR/compose/agile-compose up -d agile-ble
+    sleep 10
     $BINDIR/compose/agile-compose up -d agile-ui
     sleep 10
     $BINDIR/compose/agile-compose up -d agile-osjs
