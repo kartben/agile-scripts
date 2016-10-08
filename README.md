@@ -14,15 +14,12 @@ On a Raspberry Pi, install docker from [Hypriot](http://blog.hypriot.com/post/yo
 curl -s https://packagecloud.io/install/repositories/Hypriot/Schatzkiste/script.deb.sh | sudo bash
 sudo apt-get install -y docker-hypriot docker-compose
 sudo usermod -a -G docker pi
+# you can make the group change effective without logout/login (http://superuser.com/questions/272061/reload-a-linux-users-group-assignments-without-logging-out)
+su - $USER
 ```
 
 On other machines, install at least version 1.8. Check it with `docker-compose -v`.
 Read more on how to [install or upgrade](https://docs.docker.com/compose/install/)
-
-- You can make the [group change effective without logout/login](http://superuser.com/questions/272061/reload-a-linux-users-group-assignments-without-logging-out)
-```
-`su - $USER`
-```
 
 - Disable Bluez in the host
 
