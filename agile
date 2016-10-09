@@ -1,12 +1,12 @@
-#!/bin/bash
+#!/bin/sh
 
 BINDIR=$(dirname $0)
 
-function is_service_up {
+is_service_up (){
   [ $(curl -sL -w "%{http_code}\\n" "$1" -o /dev/null) -eq "$2" ]
 }
 
-function wait_for_service {
+wait_for_service (){
   while ! is_service_up $1 $2  ; do
     echo "Waiting for $1"
     sleep 1
