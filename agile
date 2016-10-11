@@ -1,6 +1,6 @@
 #!/bin/sh
 
-BINDIR=$(dirname $0)
+BINDIR=$(dirname $(realpath $0))
 
 is_service_up (){
   [ $(curl -sL -w "%{http_code}\\n" "$1" -o /dev/null) -eq "$2" ]
