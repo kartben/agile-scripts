@@ -6,7 +6,9 @@ export COMPOSE_HTTP_TIMEOUT=300
 
 export AGILE_CLIENT_PORT=2000
 export DBUS_SYSTEM_SOCKET=/var/run/dbus/system_bus_socket
-export DBUS_SESSION_SOCKET=$HOME/agile_bus_socket2
+export DBUS_SESSION_SOCKET_DIR=$HOME/.agile/agile_bus/
+export DBUS_SESSION_SOCKET_NAME=agile_bus_socket
+export DBUS_SESSION_SOCKET=$DBUS_SESSION_SOCKET_DIR/$DBUS_SESSION_SOCKET_NAME
 export ARCH=`arch`
 
 case $ARCH in

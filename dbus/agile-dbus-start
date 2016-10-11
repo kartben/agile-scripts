@@ -2,8 +2,10 @@
 
 ARCH=$(uname -m)
 BINDIR=$(dirname $0)
-DBUS_AGILE_BUS_ADDRESS="$HOME/agile_bus_socket2"
+DBUS_AGILE_BUS_DIR="$HOME/.agile/agile_bus/"
+DBUS_AGILE_BUS_ADDRESS="$DBUS_AGILE_BUS_DIR/agile_bus_socket"
 
+mkdir -p $DBUS_AGILE_BUS_DIR
 dbus-daemon \
   --fork \
   --print-pid --print-address \

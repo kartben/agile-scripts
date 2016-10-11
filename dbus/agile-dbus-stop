@@ -1,5 +1,3 @@
 #!/bin/sh
 
-DBUS_AGILE_BUS_ADDRESS="$HOME/agile_bus_socket2"
-
 pkill -f "print-address --address=unix:path=$HOME/agile_bus_socket2"
