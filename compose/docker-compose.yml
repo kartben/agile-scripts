@@ -72,8 +72,9 @@ services:
 
     agile-zb:
       image: agileiot/agile-zb-armv7l
+      devices:
+        - /dev/ttyUSB0:/dev/ttyUSB0
       volumes:
-        - /dev/ttyUSB0:/dev/ttyUSB0 \
         - $DBUS_SESSION_SOCKET_DIR:/usr/src/app/.agile_bus
       environment:
         - DBUS_SESSION_BUS_ADDRESS=unix:path=/usr/src/app/.agile_bus/agile_bus_socket
