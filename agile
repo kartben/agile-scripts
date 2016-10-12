@@ -47,10 +47,13 @@ case "$1" in
   update)
     $BINDIR/compose/agile-compose pull
     ;;
-  zb)
+  zb-start)
     $BINDIR/compose/agile-compose up -d agile-zb
     sleep 3
     $BINDIR/compose/agile-compose up -d agile-zb-lamp
+    ;;
+  zb-stop)
+    $BINDIR/compose/agile-compose stop agile-zb-lamp agile-zb
     ;;
   *)
     echo "Usage: $0 {start|stop|restart|update}"
