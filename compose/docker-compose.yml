@@ -4,6 +4,7 @@ services:
     agile-core:
       image: agileiot/agile-core-$ARCH
       volumes:
+        - $DBUS_SYSTEM_SOCKET:/var/run/dbus/system_bus_socket
         - $DBUS_SESSION_SOCKET_DIR:/usr/src/app/.agile_bus
       environment:
         - DBUS_SESSION_BUS_ADDRESS=unix:path=/usr/src/app/.agile_bus/agile_bus_socket
@@ -11,18 +12,7 @@ services:
         - 8080:8080/tcp
       restart: always
       privileged: true
-      command: bash -c "scripts/start.sh DeviceManager & scripts/start.sh ProtocolManager & scripts/start.sh http"
-
-    agile-ble:
-      image: agileiot/agile-core-$ARCH
-      volumes:
-        - $DBUS_SESSION_SOCKET_DIR:/usr/src/app/.agile_bus
-      environment:
-        - DBUS_SESSION_BUS_ADDRESS=unix:path=/usr/src/app/.agile_bus/agile_bus_socket
-      restart: always
-      privileged: true
-      network_mode: "host"
-      command: bash -c "mkdir -p /var/run/dbus && dbus-daemon --system && /usr/local/libexec/bluetooth/bluetoothd -E & sleep 10 && scripts/start.sh BLE"
+      #command: bash -c "scripts/start.sh DeviceManager & scripts/start.sh ProtocolManager & scripts/start.sh http"
 
     agile-ui:
       image: agileiot/agile-ui-armv7l
