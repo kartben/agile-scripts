@@ -31,6 +31,11 @@ case "$1" in
     $BINDIR/compose/agile-compose up -d agile-zb-lamp
     ;;
   stop)
+    $BINDIR/compose/agile-compose stop
+    #$BINDIR/compose/agile-compose rm agile-nodered
+    $BINDIR/dbus/agile-dbus-stop
+    ;;
+  down)
     $BINDIR/dbus/agile-dbus-stop
     $BINDIR/compose/agile-compose down
     ;;
