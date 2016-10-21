@@ -16,9 +16,8 @@ wait_for_service (){
 case "$1" in
   start)
     $BINDIR/dbus/agile-dbus-start
-    sudo hciconfig hci0 down
-    sudo hciconfig hci0 up
     $BINDIR/compose/agile-compose up -d agile-core
+    $BINDIR/compose/agile-compose up -d agile-ble
     wait_for_service "http://localhost:8080" 404
     $BINDIR/compose/agile-compose up -d agile-ui
     wait_for_service "http://localhost:2000" 200
