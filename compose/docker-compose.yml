@@ -78,7 +78,7 @@ services:
     agile-zb:
       image: agileiot/agile-zb-armv7l
       devices:
-        - /dev/ttyUSB0:/dev/ttyUSB0
+        - $AGILE_ZB_TTY:$AGILE_ZB_TTY
       volumes:
         - $DBUS_SESSION_SOCKET_DIR:/usr/src/app/.agile_bus
       environment:

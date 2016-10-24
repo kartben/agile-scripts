@@ -5,6 +5,9 @@ BINDIR=$(dirname $(realpath $0))
 export COMPOSE_HTTP_TIMEOUT=300
 
 export AGILE_CLIENT_PORT=2000
+
+export AGILE_ZB_TTY=/dev/ttyUSB0
+
 export DBUS_SYSTEM_SOCKET=/var/run/dbus/system_bus_socket
 export DBUS_SESSION_SOCKET_DIR=$HOME/.agile/agile_bus/
 export DBUS_SESSION_SOCKET_NAME=agile_bus_socket
