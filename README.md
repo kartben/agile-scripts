@@ -21,13 +21,14 @@ su - $USER
 On other machines, install at least version 1.8. Check it with `docker-compose -v`.
 Read more on how to [install or upgrade](https://docs.docker.com/compose/install/)
 
-- Disable Bluez in the host
+- Disable and stop Bluez in the host
 
 Unfortunately the Raspbian Bluez is too old. Our BLE driver needs version 5.39 with experimental features enabled. Bluez is part of the agile-core
 container, thus it should be disabled in the host OS.
 
 ```
 sudo systemctl disable bluetooth
+sudo systemctl stop bluetooth
 ```
 
 Getting AGILE
